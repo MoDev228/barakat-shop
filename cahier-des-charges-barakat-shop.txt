@@ -1,0 +1,733 @@
+CAHIER DES CHARGES FONCTIONNEL
+PROJET : BARAKAT SHOP
+Version : 1.0 — Document de travail
+Date : 14 octobre 2026
+
+======================================================================
+1. PRÉSENTATION DU PROJET
+======================================================================
+
+1.1. Contexte
+
+Barakat Shop est une activité commerciale basée au Togo qui importe des
+articles depuis la Chine pour les proposer à des clients. Les ventes sont
+actuellement organisées principalement à travers un groupe WhatsApp.
+
+Pour chaque article, l'entrepreneur publie généralement des photos, une
+description, un prix et une date de clôture. Les clients indiquent les
+quantités et les variantes souhaitées (couleur, taille, modèle, etc.).
+Après la clôture des commandes, l'entrepreneur commande les articles auprès
+du fournisseur en Chine.
+
+Les marchandises sont transportées vers le Togo, généralement par voie
+aérienne ou maritime. Elles arrivent à Lomé, puis sont acheminées vers Kara,
+où l'entrepreneur exerce son activité. Une partie des articles peut être
+conservée en stock pour une vente immédiate.
+
+Les paiements sont effectués principalement par Mixx by Yas, Flooz ou en
+espèces. Selon l'article, le client peut payer la totalité ou une partie du
+montant à la commande, puis régler le solde lorsque la marchandise arrive.
+
+1.2. Problèmes à résoudre
+
+Le fonctionnement actuel peut entraîner :
+- des erreurs dans les noms, quantités, variantes ou commandes ;
+- des difficultés à retrouver l'historique d'un client ;
+- un suivi manuel des acomptes, soldes et paiements ;
+- un manque de visibilité sur les commandes en cours de transport ;
+- des difficultés à distinguer le stock disponible des articles déjà réservés ;
+- des oublis concernant les frais, les livraisons ou les commandes abandonnées ;
+- une difficulté à calculer les dépenses et la rentabilité réelle d'une opération.
+
+1.3. Objectif général
+
+Créer une plateforme web mobile-first permettant aux clients de consulter
+les articles, de passer des commandes et de suivre leur situation, tout en
+permettant à l'administrateur de gérer les ventes, les paiements et les
+opérations de Barakat Shop depuis un tableau de bord.
+
+La plateforme doit remplacer progressivement les listes manuelles sans
+obliger l'entreprise à abandonner immédiatement son groupe WhatsApp.
+
+======================================================================
+2. OBJECTIFS SPÉCIFIQUES
+======================================================================
+
+- Centraliser le catalogue, les campagnes et les commandes.
+- Permettre aux clients de disposer d'un compte personnel.
+- Enregistrer les quantités et les variantes commandées.
+- Conserver les conditions et les prix acceptés au moment de la commande.
+- Suivre les acomptes, les paiements confirmés et les soldes restants.
+- Informer les clients de l'évolution de leurs commandes.
+- Permettre à l'administrateur de gérer les commandes depuis une interface.
+- Réduire les erreurs de saisie et les pertes d'informations.
+- Préparer l'intégration progressive du suivi des importations, des stocks,
+  des livraisons et des dépenses.
+- Protéger les informations personnelles et financières des clients.
+
+======================================================================
+3. UTILISATEURS ET RÔLES
+======================================================================
+
+3.1. Visiteur
+
+Un visiteur n'a pas encore de compte. Il peut :
+- consulter les pages publiques ;
+- parcourir les articles publiés ;
+- consulter les descriptions, variantes, prix et conditions ;
+- voir les campagnes ouvertes et leurs dates de clôture ;
+- créer un compte ou se connecter.
+
+Le visiteur ne peut pas confirmer une commande sans se connecter.
+
+3.2. Client connecté
+
+Un client peut :
+- consulter le catalogue et les campagnes ;
+- sélectionner un article, une quantité et les variantes disponibles ;
+- passer une commande conformément aux règles affichées ;
+- consulter ses commandes et leurs statuts ;
+- déclarer un paiement en indiquant les informations demandées ;
+- consulter les paiements vérifiés, le montant restant et les reçus disponibles ;
+- consulter les notifications liées à ses commandes ;
+- demander une modification ou une annulation, si les règles commerciales
+  et l'état de la commande le permettent ;
+- choisir le mode de remise proposé : retrait ou livraison, si disponible.
+
+Un client ne doit jamais pouvoir consulter les données privées d'un autre
+client, notamment ses coordonnées, paiements, soldes ou commandes détaillées.
+
+3.3. Administrateur
+
+L'administrateur gère les opérations de Barakat Shop. Il peut :
+- créer et modifier les articles, les images et les variantes ;
+- publier, ouvrir, clôturer ou suspendre une campagne ;
+- consulter les commandes et les informations nécessaires à leur traitement ;
+- confirmer ou rejeter une déclaration de paiement après vérification ;
+- enregistrer les paiements reçus en espèces ou par un autre moyen ;
+- gérer les prix, les frais et les conditions commerciales selon les règles
+  prévues ;
+- mettre à jour les statuts des commandes ;
+- gérer les clients et répondre à leurs demandes ;
+- consulter les indicateurs et rapports disponibles ;
+- consulter l'historique des actions sensibles.
+
+Le compte administrateur doit être protégé par une authentification robuste.
+Les opérations sensibles doivent être traçables.
+
+3.4. Rôles futurs
+
+Dans une version ultérieure, la plateforme pourra distinguer plusieurs rôles :
+gestionnaire, responsable des stocks, responsable des livraisons ou comptable.
+La première version peut fonctionner avec un seul administrateur principal,
+sans empêcher une extension ultérieure.
+
+======================================================================
+4. PÉRIMÈTRE DU PROJET
+======================================================================
+
+4.1. Version initiale (MVP)
+
+La première version doit inclure :
+- les pages publiques de présentation ;
+- la création de compte et la connexion ;
+- le catalogue des articles ;
+- les variantes des articles ;
+- les campagnes de commande avec date de clôture ;
+- les commandes clients ;
+- les conditions et types de prix ;
+- le suivi des acomptes, paiements et soldes ;
+- les statuts des commandes ;
+- un espace client ;
+- un tableau de bord administrateur ;
+- les notifications essentielles dans la plateforme ;
+- un historique des opérations sensibles ;
+- des mesures de sécurité et de sauvegarde.
+
+4.2. Évolutions prévues
+
+Les versions ultérieures pourront ajouter :
+- le suivi détaillé des commandes fournisseurs et des expéditions ;
+- le suivi du transport Chine–Lomé–Kara ;
+- les réceptions partielles et la gestion des articles manquants ou endommagés ;
+- la gestion des stocks disponibles et réservés ;
+- la préparation des commandes et les livraisons ;
+- le suivi des dépenses, des coûts d'importation et des marges ;
+- les rapports avancés ;
+- les notifications automatisées ;
+- une intégration officielle à WhatsApp Business, si elle est pertinente ;
+- une application web progressive (PWA) ;
+- une intégration de paiement en ligne si un prestataire adapté est disponible.
+
+4.3. Hors périmètre initial
+
+La première version ne doit pas nécessairement :
+- automatiser les conversations du compte WhatsApp personnel ;
+- garantir la confirmation automatique des paiements sans accès fiable à un
+  prestataire ou à une source officielle ;
+- remplacer un logiciel de comptabilité certifié ;
+- calculer automatiquement des droits de douane sans données fiables et
+  règles validées ;
+- gérer plusieurs boutiques ou plusieurs entreprises indépendantes.
+
+======================================================================
+5. FONCTIONNALITÉS DÉTAILLÉES
+======================================================================
+
+5.1. Pages publiques
+
+Le site présente au minimum :
+- une page d'accueil ;
+- une page catalogue ;
+- une page de détail d'un article ;
+- une page présentant Barakat Shop et son fonctionnement ;
+- une page de contact ou d'assistance ;
+- les conditions de commande, de paiement, d'annulation et de remise.
+
+Les pages doivent être lisibles sur téléphone, tablette et ordinateur.
+
+5.2. Gestion des articles
+
+Chaque article peut comporter :
+- un identifiant interne ;
+- un nom ;
+- une description ;
+- une ou plusieurs images ;
+- une catégorie ;
+- un prix ou une estimation ;
+- un type de prix ;
+- une devise ;
+- des variantes, par exemple taille, couleur ou modèle ;
+- un état de publication ;
+- des informations sur la disponibilité ;
+- des conditions commerciales ;
+- des dates de création et de mise à jour.
+
+Une variante doit être choisie parmi les options proposées. Le client ne doit
+pas pouvoir envoyer librement une variante inexistante sans validation.
+
+5.3. Campagnes de commande
+
+Une campagne permet de regrouper les commandes d'un article ou d'un ensemble
+d'articles pendant une période donnée.
+
+Une campagne peut contenir :
+- un titre et une description ;
+- les articles proposés ;
+- une date et une heure d'ouverture ;
+- une date et une heure de clôture ;
+- les conditions de commande ;
+- les règles d'acompte ;
+- le mode de calcul du prix ;
+- un état : brouillon, programmée, ouverte, clôturée ou annulée.
+
+Une commande ne peut être passée dans une campagne que si celle-ci est ouverte,
+sauf règle explicitement définie par l'administrateur.
+
+La clôture d'une campagne empêche les nouvelles commandes ordinaires, mais
+ne supprime pas les commandes déjà confirmées.
+
+5.4. Commandes clients
+
+Une commande doit enregistrer :
+- le client concerné ;
+- une référence unique lisible ;
+- la date de création ;
+- les articles, quantités et variantes ;
+- le prix enregistré pour chaque ligne ;
+- les conditions commerciales acceptées ;
+- le montant estimé ou convenu ;
+- les frais connus et les frais restant éventuellement à déterminer ;
+- le montant payé et le solde connu ;
+- le statut de la commande ;
+- les informations nécessaires au retrait ou à la livraison, si applicable.
+
+Les informations commerciales acceptées doivent être conservées avec la
+commande. Une modification ultérieure du prix d'un article ne doit pas
+modifier silencieusement le prix historique d'une commande existante.
+
+Toute correction importante doit être justifiée, communiquée au client si elle
+affecte ses obligations, et enregistrée dans l'historique.
+
+5.5. Liste des commandes d'une campagne
+
+Pour préserver l'esprit des listes WhatsApp, une campagne peut présenter une
+liste des commandes ou des quantités agrégées.
+
+La visibilité doit être définie avant la publication. Par défaut, les autres
+clients ne doivent pas voir les montants payés, les soldes, les références de
+paiement, les numéros de téléphone ou les coordonnées privées.
+
+Si les noms ou pseudonymes des clients sont visibles dans une liste partagée,
+les clients doivent en être informés avant de confirmer leur commande. Une
+option plus respectueuse de la vie privée consiste à afficher uniquement les
+quantités commandées par variante ou un nom d'affichage choisi par le client.
+
+5.6. Gestion des prix
+
+La plateforme doit prendre en charge deux modes.
+
+A. Prix définitif
+
+Le prix annoncé est le prix convenu pour les éléments clairement décrits.
+Les conditions doivent préciser ce que ce prix inclut et ce qu'il n'inclut pas.
+Par exemple, la livraison locale peut être facturée séparément si cela est
+annoncé avant la confirmation.
+
+B. Prix provisoire
+
+Le montant annoncé est une estimation et certains frais peuvent être connus
+plus tard. Avant que le client s'engage, la plateforme doit expliquer :
+- quels éléments sont provisoires ;
+- quels frais peuvent s'ajouter ;
+- comment le montant final sera calculé ;
+- à quel moment il sera communiqué ;
+- comment le client pourra accepter la différence ou demander une solution
+  conforme aux conditions annoncées.
+
+Le montant ne doit jamais être augmenté de manière silencieuse. Toute
+différence doit être expliquée et communiquée au client.
+
+Le terme « TTC » doit être utilisé uniquement lorsque sa signification et les
+frais inclus sont clairement établis. Les obligations fiscales et douanières
+applicables au Togo doivent être vérifiées avant de finaliser les règles
+commerciales. Le présent document ne constitue pas un avis fiscal ou juridique.
+
+5.7. Acomptes et paiements
+
+La plateforme doit permettre de définir, selon l'article ou la campagne :
+- un paiement intégral à la commande ;
+- un acompte fixe ;
+- un acompte exprimé en pourcentage, par exemple 50 % ;
+- un solde payable à une étape déterminée.
+
+Chaque paiement doit contenir au minimum :
+- une référence interne unique ;
+- la commande concernée ;
+- le montant et la devise ;
+- le moyen de paiement ;
+- la date de déclaration ou d'enregistrement ;
+- la référence de transaction, si disponible ;
+- le statut ;
+- la personne qui l'a vérifié ;
+- la date de vérification ;
+- une note de justification en cas de rejet ou de correction.
+
+États possibles d'un paiement :
+- déclaré par le client ;
+- en vérification ;
+- confirmé ;
+- rejeté ;
+- remboursé partiellement ou totalement, si applicable.
+
+Une capture d'écran fournie par un client ne suffit pas, à elle seule, à
+prouver qu'un paiement a été reçu. L'administrateur doit vérifier le paiement
+à partir d'une source fiable avant de le confirmer.
+
+Un même paiement ne doit pas être comptabilisé deux fois. Les corrections,
+annulations et remboursements doivent être tracés. Un paiement confirmé ne
+doit pas être effacé comme s'il n'avait jamais existé.
+
+5.8. Espace client
+
+L'espace client présente :
+- ses informations de compte ;
+- la liste de ses commandes ;
+- le détail de chaque commande ;
+- les montants convenus ou estimés et leurs explications ;
+- les paiements déclarés et confirmés ;
+- le solde calculé par le serveur ;
+- les statuts et l'historique visible de la commande ;
+- les instructions de paiement et de remise ;
+- les notifications et reçus disponibles.
+
+5.9. Tableau de bord administrateur
+
+Le tableau de bord doit permettre de voir rapidement :
+- les commandes récentes ;
+- les commandes nécessitant une action ;
+- les paiements à vérifier ;
+- les soldes restant à payer ;
+- les campagnes ouvertes et celles à clôturer ;
+- les commandes en attente d'une décision ;
+- les articles et informations nécessitant une mise à jour.
+
+Les indicateurs affichés doivent être calculés à partir des données enregistrées,
+et non de chiffres saisis arbitrairement dans l'interface.
+
+5.10. Notifications
+
+La première version peut afficher des notifications dans l'espace client et
+prévoir des messages manuels via WhatsApp.
+
+Les événements pouvant déclencher une notification comprennent :
+- la confirmation d'une commande ;
+- la déclaration ou la confirmation d'un paiement ;
+- le rejet d'un paiement avec explication ;
+- la clôture d'une campagne ;
+- la mise à jour importante du prix estimé ;
+- l'arrivée de la marchandise ;
+- la disponibilité pour retrait ou livraison ;
+- l'annulation ou le remboursement.
+
+Les notifications automatiques par SMS, e-mail ou WhatsApp pourront être
+ajoutées ultérieurement. Leur disponibilité dépendra des services choisis,
+de leurs coûts et des consentements nécessaires.
+
+======================================================================
+6. RÈGLES MÉTIER
+======================================================================
+
+RM-01. Une commande doit être associée à un client identifié.
+
+RM-02. Une commande doit contenir au moins une ligne valide.
+
+RM-03. Le serveur calcule les prix, totaux, acomptes et soldes. Il ne fait pas
+confiance aux montants envoyés par le navigateur.
+
+RM-04. Le prix et les conditions acceptés sont conservés dans l'historique
+de la commande.
+
+RM-05. La modification du prix du catalogue n'altère pas automatiquement les
+commandes déjà confirmées.
+
+RM-06. Une campagne clôturée ne reçoit plus de nouvelles commandes ordinaires.
+
+RM-07. Un paiement déclaré n'est pas considéré comme confirmé avant vérification.
+
+RM-08. Le solde est calculé à partir du montant applicable et des paiements
+confirmés, en tenant compte des remboursements et ajustements validés.
+
+RM-09. Les opérations financières sensibles doivent être traçables.
+
+RM-10. Une commande ou un paiement important ne doit pas être supprimé
+physiquement pour masquer une erreur. Les corrections doivent être enregistrées.
+
+RM-11. Un client ne peut accéder qu'à ses propres données, sauf informations
+publiques explicitement prévues.
+
+RM-12. Les données privées des clients ne sont jamais exposées dans une liste
+publique de campagne.
+
+RM-13. Toute modification qui augmente le montant dû doit être expliquée et
+communiquée selon les conditions acceptées.
+
+RM-14. Une commande peut être annulée uniquement selon les règles commerciales
+applicables et son état. Une commande déjà passée au fournisseur peut nécessiter
+une procédure distincte.
+
+RM-15. Les statuts doivent refléter l'état réel. Par exemple, la remise au
+transporteur ne signifie pas que le client a reçu son colis.
+
+RM-16. Les opérations concurrentes sur le stock ou les paiements doivent être
+protégées contre les doubles traitements.
+
+======================================================================
+7. STATUTS ET PARCOURS DES COMMANDES
+======================================================================
+
+Les statuts ci-dessous sont une proposition à valider avant le développement.
+
+7.1. Parcours commercial proposé
+
+- Brouillon : commande commencée mais non soumise.
+- En attente de paiement : commande soumise, paiement requis.
+- Paiement partiel : une partie du montant a été confirmée.
+- Confirmée : commande acceptée selon les règles commerciales.
+- Incluse dans la commande fournisseur : commande regroupée pour achat.
+- En cours d'approvisionnement : commande fournisseur ou préparation en cours.
+- En transit : marchandises expédiées.
+- Arrivée au Togo : marchandises arrivées au pays.
+- En acheminement local : transfert vers le lieu de stockage ou de remise.
+- Reçue : marchandise réceptionnée par Barakat Shop.
+- Disponible pour retrait/livraison : commande prête pour le client.
+- Remise au transporteur : colis confié au livreur.
+- Terminée : remise au client confirmée.
+- Annulée : commande annulée selon les règles applicables.
+- En anomalie : problème nécessitant une intervention.
+
+Ces statuts peuvent être simplifiés dans le MVP si le suivi détaillé de
+l'importation est réservé à une version ultérieure. Le client ne doit voir que
+les états pertinents et confirmés.
+
+7.2. Parcours d'un paiement
+
+1. Le client déclare un paiement ou l'administrateur l'enregistre.
+2. Le paiement apparaît comme « en vérification » si une vérification est requise.
+3. L'administrateur vérifie le paiement auprès d'une source fiable.
+4. Le paiement est confirmé ou rejeté avec une raison.
+5. Le solde est recalculé côté serveur.
+6. L'action est inscrite dans l'historique.
+
+7.3. Parcours d'une livraison
+
+1. Le client choisit un mode de remise proposé.
+2. Les frais et les informations nécessaires sont enregistrés.
+3. La commande est préparée.
+4. En cas de livraison, le colis est confié au transporteur et ce fait est tracé.
+5. La commande n'est terminée qu'après confirmation de la remise au client.
+6. En cas d'échec, l'état est mis à jour et une action de suivi est prévue.
+
+======================================================================
+8. DONNÉES, CONFIDENTIALITÉ ET SÉCURITÉ
+======================================================================
+
+8.1. Données personnelles
+
+La plateforme peut traiter le nom, l'adresse e-mail si utilisée, le numéro de
+téléphone, les informations nécessaires à la remise des commandes et l'historique
+des achats.
+
+Seules les données nécessaires au fonctionnement doivent être collectées.
+L'accès à ces données doit être limité aux personnes qui en ont besoin.
+
+Les conditions de confidentialité doivent expliquer quelles données sont
+collectées, pourquoi elles le sont, qui peut y accéder et comment contacter
+Barakat Shop pour une demande liée aux données.
+
+8.2. Authentification et autorisations
+
+- Les mots de passe doivent être hachés avec une fonction adaptée.
+- Les sessions doivent être configurées de manière sécurisée.
+- Les tentatives de connexion doivent être limitées contre les abus.
+- Chaque requête privée doit vérifier les droits côté serveur.
+- Cacher un bouton dans l'interface ne remplace pas une vérification d'accès.
+- Les comptes administrateurs doivent bénéficier d'une protection renforcée.
+
+8.3. Protection de l'application
+
+Le développement doit prévoir :
+- des requêtes SQL préparées avec PDO ;
+- la validation des données côté serveur ;
+- l'encodage des contenus affichés pour réduire le risque XSS ;
+- une protection CSRF lorsque nécessaire ;
+- une validation stricte des fichiers téléversés ;
+- la protection contre les accès directs aux commandes d'autres clients ;
+- la gestion sécurisée des erreurs, sans exposer les secrets ;
+- HTTPS en production ;
+- des dépendances maintenues et mises à jour ;
+- des sauvegardes régulières et des essais de restauration.
+
+8.4. Secrets et paiements
+
+Les mots de passe de base de données, clés API et autres secrets ne doivent
+pas être publiés dans le dépôt Git. Ils doivent être stockés dans des variables
+d'environnement ou un mécanisme sécurisé adapté à l'hébergement.
+
+La plateforme ne doit pas stocker les identifiants secrets des portefeuilles
+mobiles des clients ni les données de carte bancaire. Une intégration de paiement
+devra utiliser un prestataire approprié.
+
+8.5. Journal d'audit
+
+L'application doit garder une trace des opérations importantes, notamment :
+- changement de prix ou de conditions ;
+- modification ou annulation de commande ;
+- confirmation, rejet ou correction d'un paiement ;
+- remboursement ;
+- changement de statut sensible ;
+- ajustement de stock dans une version qui gère le stock ;
+- modification des droits d'un utilisateur.
+
+Le journal doit indiquer, lorsque c'est pertinent, qui a effectué l'action,
+quand elle a eu lieu et quelles données importantes ont changé. Les secrets
+et données de paiement sensibles ne doivent pas y être enregistrés.
+
+======================================================================
+9. EXIGENCES TECHNIQUES ET QUALITÉ
+======================================================================
+
+9.1. Technologies envisagées
+
+- Frontend : React, JavaScript et Vite.
+- Interface : Tailwind CSS et shadcn/ui.
+- Backend : PHP avec Composer et une API organisée.
+- Base de données : MySQL.
+- Accès aux données : PDO et requêtes préparées.
+- Versionnement : Git et dépôt GitHub privé ou public selon les décisions
+  de publication et la présence éventuelle de fichiers non destinés au public.
+
+Ces choix constituent une proposition technique et pourront être ajustés après
+validation du cahier des charges.
+
+9.2. Utilisation sur mobile
+
+L'interface doit être pensée d'abord pour les téléphones :
+- navigation simple ;
+- boutons suffisamment grands ;
+- formulaires courts et compréhensibles ;
+- images optimisées ;
+- affichage lisible des prix, variantes, statuts et dates ;
+- messages d'erreur compréhensibles.
+
+9.3. Fiabilité et maintenance
+
+- Les erreurs doivent être journalisées sans exposer les données privées.
+- Les opérations sensibles doivent être testées.
+- Les mises à jour doivent être versionnées avec Git.
+- Les sauvegardes doivent être planifiées.
+- Une procédure de restauration doit être testée.
+- Les dépendances doivent être maintenues.
+- Les données de test ne doivent pas contenir de véritables secrets.
+
+======================================================================
+10. CRITÈRES D'ACCEPTATION DU MVP
+======================================================================
+
+Le MVP pourra être considéré comme fonctionnel lorsque les scénarios suivants
+seront testés avec succès :
+
+CA-01. Un visiteur peut consulter les articles publiés et leurs conditions.
+
+CA-02. Un visiteur peut créer un compte et se connecter.
+
+CA-03. Un client connecté peut sélectionner un article, une variante et une
+quantité valide.
+
+CA-04. Le serveur refuse une commande si la campagne est clôturée ou si les
+données de commande sont invalides.
+
+CA-05. Une commande conserve le prix, les variantes et les conditions acceptés
+au moment de sa confirmation.
+
+CA-06. Une modification ultérieure du catalogue ne change pas le montant
+historique de la commande.
+
+CA-07. Un client peut consulter ses commandes et ne peut pas accéder à celles
+d'un autre client en modifiant une URL ou un identifiant.
+
+CA-08. Un client peut déclarer un paiement et l'administrateur peut le confirmer
+ou le rejeter après vérification.
+
+CA-09. Un paiement non confirmé ne réduit pas le solde payable.
+
+CA-10. Le système empêche le double enregistrement involontaire d'un même
+paiement et garde une trace des corrections.
+
+CA-11. Les prix provisoires, frais possibles et conditions de calcul final
+sont clairement présentés avant l'engagement du client.
+
+CA-12. L'administrateur peut publier un article, ouvrir une campagne et la
+clôturer.
+
+CA-13. Les montants payés et soldes des clients ne sont pas visibles publiquement.
+
+CA-14. Les pages principales sont utilisables sur un téléphone.
+
+CA-15. Les secrets ne sont pas présents dans le code source publié.
+
+CA-16. Les sauvegardes et une restauration de test sont documentées.
+
+======================================================================
+11. RISQUES ET MESURES DE RÉDUCTION
+======================================================================
+
+Risque : client qui abandonne après la commande fournisseur.
+Mesure : publier des conditions claires, enregistrer l'acceptation du client,
+définir les règles d'annulation et d'acompte avant la confirmation.
+
+Risque : fausse déclaration ou double enregistrement de paiement.
+Mesure : vérification auprès d'une source fiable, référence de transaction,
+contrôle des doublons et journal d'audit.
+
+Risque : variation des frais d'importation ou de transport.
+Mesure : distinguer prix définitif et prix provisoire, documenter la méthode
+de calcul et informer le client avant tout engagement concerné.
+
+Risque : perte de données.
+Mesure : sauvegardes régulières, accès limités et tests de restauration.
+
+Risque : accès non autorisé aux commandes.
+Mesure : contrôle d'autorisation côté serveur à chaque requête privée et tests
+de sécurité.
+
+Risque : erreur de quantité ou de variante.
+Mesure : validation des variantes, récapitulatif avant confirmation et suivi
+des écarts lors de la réception des marchandises.
+
+Risque : confusion entre argent encaissé et bénéfice.
+Mesure : distinguer les paiements clients, les montants dus, les dépenses,
+les coûts d'importation et la marge. Le calcul financier avancé sera ajouté
+dans une version ultérieure.
+
+======================================================================
+12. QUESTIONS À VALIDER AVANT LA MODÉLISATION
+======================================================================
+
+Les éléments ci-dessous restent à confirmer avec l'entrepreneur. Ils ne doivent
+pas être supposés automatiquement.
+
+Q1. Création de compte :
+Le compte client sera-t-il créé avec un numéro de téléphone, une adresse e-mail,
+ou les deux ? Comment le numéro ou l'adresse sera-t-il vérifié ?
+
+Q2. Visibilité des commandes :
+Les autres clients pourront-ils voir le nom ou le pseudonyme des personnes qui
+ont commandé, ou seulement les quantités par article et par variante ?
+
+Q3. Confirmation d'une commande :
+Une commande est-elle confirmée immédiatement après sa soumission, après le
+paiement de l'acompte, ou après validation manuelle par l'administrateur ?
+
+Q4. Acompte :
+Le pourcentage d'acompte sera-t-il défini par article/campagne, ou pourra-t-il
+varier selon les clients ? Quel délai le client aura-t-il pour payer l'acompte ?
+
+Q5. Prix provisoire :
+Si le montant final dépasse l'estimation, quelle procédure exacte doit être
+appliquée ? Par exemple : acceptation du nouveau montant, annulation selon des
+conditions annoncées, ou autre procédure. Cette règle doit être établie avant
+la mise en production.
+
+Q6. Annulation et abandon :
+Jusqu'à quelle étape le client peut-il demander une annulation ? Dans quels cas
+l'acompte peut-il être conservé ou remboursé ? Les conditions doivent être
+vérifiées et communiquées clairement.
+
+Q7. Paiements :
+L'administrateur vérifiera-t-il tous les paiements manuellement au début ?
+Quelles informations de référence sont disponibles pour Mixx by Yas et Flooz ?
+
+Q8. Remise des commandes :
+Le retrait à Kara sera-t-il le mode par défaut ? La livraison sera-t-elle
+disponible à Kara, Lomé ou dans d'autres localités ? Comment seront calculés
+les frais de livraison ?
+
+Q9. Stock immédiat :
+Les articles déjà en possession de l'entrepreneur seront-ils vendus dans le
+même catalogue que les articles en précommande, avec une indication claire
+de leur disponibilité ?
+
+Q10. Notifications :
+Au lancement, les notifications dans le site et les messages WhatsApp manuels
+suffisent-ils ? Faut-il prévoir l'e-mail dès la première version ?
+
+Q11. Conditions commerciales :
+Qui validera les règles d'acompte, d'annulation, de prix provisoire, de taxes
+et de remboursement avant leur publication ?
+
+Q12. Hébergement et nom de domaine :
+Le choix de l'hébergement et du nom de domaine sera fait après définition des
+besoins techniques et du budget.
+
+======================================================================
+13. ÉTAPES SUIVANTES
+======================================================================
+
+Étape 1 : relire et valider le présent cahier des charges.
+Étape 2 : répondre aux questions restantes et préciser les règles commerciales.
+Étape 3 : établir les parcours détaillés et les statuts définitifs.
+Étape 4 : concevoir le modèle de données (MCD/MLD), puis le schéma MySQL.
+Étape 5 : préparer les maquettes des pages principales.
+Étape 6 : développer progressivement l'API PHP sécurisée.
+Étape 7 : développer le frontend React.
+Étape 8 : tester les scénarios fonctionnels, les autorisations et les paiements.
+Étape 9 : déployer, sauvegarder et documenter la maintenance.
+
+Chaque étape doit être validée avant de passer à la suivante. Les règles
+commerciales qui touchent aux prix, acomptes, annulations et remboursements
+doivent être clarifiées avant le développement des fonctionnalités concernées.
+
+======================================================================
+FIN DU DOCUMENT
+======================================================================

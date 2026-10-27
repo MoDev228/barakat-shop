@@ -1,0 +1,22 @@
+
+# Secrets et configuration locale
+.env
+.env.*
+!.env.example
+
+# Dépendances
+/vendor/
+/node_modules/
+
+# Fichiers générés et caches
+/dist/
+/build/
+/coverage/
+*.log
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+EOF
